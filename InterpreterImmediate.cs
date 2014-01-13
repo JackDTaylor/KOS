@@ -26,6 +26,7 @@ namespace kOS
             StdOut("KerboScript v" + Core.VersionInfo.ToString());
             StdOut("");
             StdOut("Proceed.");
+            Add("copy autoexec from archive. run autoexec.");
         }
 
         public void Add(string cmdString)
