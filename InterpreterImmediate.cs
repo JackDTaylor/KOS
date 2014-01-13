@@ -25,8 +25,24 @@ namespace kOS
             StdOut("kOS Operating System");
             StdOut("KerboScript v" + Core.VersionInfo.ToString());
             StdOut("");
+
+            bool autoexecExists = false;
+            if (SelectedVolume.GetByName("autoexec") != null) {
+                Volume ArchiveVolume = GetVolume("Archive");
+
+                if (ArchiveVolume.GetByName("autoexec") != null) {
+                    Add("copy autoexec from archive.");
+                }
+            } else {
+                autoexecExists = true;
+            }
+
+            if (autoexecExists) {
+                WriteLine("Executing autoexec...");
+                Add("run autoexec.");
+            }
+
             StdOut("Proceed.");
-            Add("copy autoexec from archive. run autoexec.");
         }
 
         public void Add(string cmdString)
