@@ -28,18 +28,21 @@ namespace kOS
 
             bool autoexecExists = false;
             if (SelectedVolume.GetByName("autoexec") != null) {
+                autoexecExists = true;
+            } else {
                 Volume ArchiveVolume = GetVolume("Archive");
 
                 if (ArchiveVolume.GetByName("autoexec") != null) {
                     Add("copy autoexec from archive.");
+                    autoexecExists = true;
                 }
-            } else {
-                autoexecExists = true;
             }
 
             if (autoexecExists) {
-                WriteLine("Executing autoexec...");
+                StdOut("Executing autoexec...");
                 Add("run autoexec.");
+            } else {
+                StdOut("Autoexec was not found.");
             }
 
             StdOut("Proceed.");
