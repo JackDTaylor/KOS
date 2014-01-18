@@ -198,7 +198,7 @@ namespace kOS
     {
       foreach (var body in FlightGlobals.fetch.bodies)
       {
-        if (body.name.ToUpper() == "KERBIN") return Vector3d.Distance(body.position, vessel.GetWorldPos3D()) - 600000; // Kerbin radius = 600,000
+        if (body.name.ToUpper() == "KERBIN") return Vector3d.Distance(body.position, vessel.GetWorldPos3D()) - body.Radius; // Kerbin radius = 600,000
       }
 
       throw new kOSException("Planet Kerbin not found!");
