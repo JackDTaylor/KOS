@@ -43,9 +43,10 @@ namespace kOS
             manager.AddGetter("SHIP", delegate(CPU cpu) { return new VesselTarget(cpu.Vessel, cpu); });
 
             // These are now considered shortcuts to SHIP:suffix
-            foreach (String scName in VesselTarget.ShortCuttableShipSuffixes)
+            foreach (string scName in VesselTarget.ShortCuttableShipSuffixes)
             {
-                manager.AddGetter(scName, delegate(CPU cpu) { return new VesselTarget(cpu.Vessel, cpu).GetSuffix(scName); });
+                string name = scName;
+                manager.AddGetter(name, delegate(CPU cpu) { return new VesselTarget(cpu.Vessel, cpu).GetSuffix(name); });
             }
 
             manager.AddSetter("VESSELNAME", delegate(CPU cpu, object value) { cpu.Vessel.vesselName = value.ToString(); });
